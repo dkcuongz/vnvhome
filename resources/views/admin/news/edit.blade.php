@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-    <form action="{{route('admin.main-contents.update', $post)}}" method="post" enctype="multipart/form-data" id="upload-image">
+    <form action="{{route('admin.news.update', $post)}}" method="post" enctype="multipart/form-data" id="upload-image">
         @method('PUT')
         @csrf
         <div class="row">
@@ -65,8 +65,8 @@
 
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">Cập nhật</button>
-                        <a href="{{route('admin.main-contents.index')}}" class="btn btn-default">
-                            Danh sách bài viết sự kiện
+                        <a href="{{route('admin.news.index')}}" class="btn btn-default">
+                            Danh sách bài viết tin tức
                         </a>
                     </div>
                 </div>

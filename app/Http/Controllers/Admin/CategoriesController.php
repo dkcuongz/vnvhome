@@ -62,7 +62,7 @@ class CategoriesController extends Controller
                 'message' => 'category created.',
                 'data' => $category->toArray(),
             ];
-            return redirect(route('admin.categories.index'))->with('message', $response['message']);
+            return redirect(route('admin.categories.index'))->with('success_message', $response['message']);
         } catch (\Exception $e) {
             return redirect()->back()->with('error_message', $e->getMessage())->withInput();
         }
@@ -113,7 +113,7 @@ class CategoriesController extends Controller
                 'message' => 'Category updated.',
                 'data' => $categoryUpdate->toArray(),
             ];
-            return redirect(route('admin.categories.index'))->with('message', $response['message']);
+            return redirect(route('admin.categories.index'))->with('success_message', $response['message']);
         } catch (\Exception $e) {
             return redirect()->back()->with('error_message', $e->getMessage())->withInput();
         }

@@ -12,7 +12,7 @@ use Prettus\Repository\Criteria\RequestCriteria;
  *
  * @package namespace App\Repositories;
  */
-class MainContentRepositoryEloquent extends BaseRepositoryEloquent implements MainContentRepository
+class NewsRepositoryEloquent extends BaseRepositoryEloquent implements NewsRepository
 {
     /**
      * Specify Model class name

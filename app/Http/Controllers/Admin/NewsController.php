@@ -3,19 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\MainContentCreateRequest;
-use App\Http\Requests\MainContentUpdateRequest;
-use App\Http\Requests\PostCreateRequest;
-use App\Http\Requests\PostUpdateRequest;
+use App\Http\Requests\NewsCreateRequest;
+use App\Http\Requests\NewsUpdateRequest;
 use App\Repositories\CategoriesRepository;
 use App\Repositories\ImageRepository;
-use App\Repositories\MainContentRepository;
-use App\Repositories\PostRepository;
+use App\Repositories\NewsRepository;
 
-class MainContentController extends Controller
+class NewsController extends Controller
 {
     /**
-     * @var MainContentRepository
+     * @var NewsRepository
      */
     protected $repository;
 
@@ -34,11 +31,11 @@ class MainContentController extends Controller
     /**
      * postsController constructor.
      *
-     * @param MainContentRepository $repository
+     * @param NewsRepository $repository
      * @param ImageRepository $imageRepository
      * @param CategoriesRepository $categoryRepository
      */
-    public function __construct(MainContentRepository $repository, ImageRepository $imageRepository, CategoriesRepository $categoryRepository)
+    public function __construct(NewsRepository $repository, ImageRepository $imageRepository, CategoriesRepository $categoryRepository)
     {
         $this->repository = $repository;
         $this->imageRepository = $imageRepository;
@@ -57,24 +54,24 @@ class MainContentController extends Controller
                 $subQuery->where(['id' => 5]);
             });
         })->where('type',config('constants.post.type.new'))->get();
-        return view('admin.posts-event.index', compact('posts'));
+        return view('admin.news.index', compact('posts'));
     }
 
 
     public function create()
     {
         $categories = $this->categoryRepository->with(['allLevelChildren'])->where('parent_id', '=', 5)->get();
-        return view('admin.posts-event.create', compact('categories'));
+        return view('admin.news.create', compact('categories'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param PostCreateRequest $request
+     * @param NewsCreateRequest $request
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(PostCreateRequest $request)
+    public function store(NewsCreateRequest $request)
     {
         DB::beginTransaction();
         try {
@@ -95,7 +92,7 @@ class MainContentController extends Controller
                 'data' => $post->toArray(),
             ];
             DB::commit();
-            return redirect(route('admin.main-contents.index'))->with('success_message', $response['message']);
+            return redirect(route('admin.news.index'))->with('success_message', $response['message']);
         } catch (\Exception $e) {
             DB::rollBack();
             return redirect()->back()->with('error_message', $e->getMessage())->withInput();
@@ -113,7 +110,7 @@ class MainContentController extends Controller
     {
         $categories = $this->categoryRepository->with(['allLevelChildren'])->where('parent_id', '=', 5)->get();
         $post = $this->repository->with('image')->find($id);
-        return view('admin.posts-event.detail', compact('post', 'categories'));
+        return view('admin.news.detail', compact('post', 'categories'));
     }
 
     /**
@@ -127,18 +124,18 @@ class MainContentController extends Controller
     {
         $categories = $this->categoryRepository->with(['allLevelChildren'])->where('parent_id', '=', 5)->get();
         $post = $this->repository->with('image')->find($id);
-        return view('admin.posts-event.edit', compact('post', 'categories'));
+        return view('admin.news.edit', compact('post', 'categories'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param PostUpdateRequest $request
+     * @param NewsUpdateRequest $request
      * @param string $id
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(PostUpdateRequest $request, $id)
+    public function update(NewsUpdateRequest $request, $id)
     {
         DB::beginTransaction();
         try {
@@ -159,7 +156,7 @@ class MainContentController extends Controller
                 'data' => $post->toArray(),
             ];
             DB::commit();
-            return redirect(route('admin.main-contents.index'))->with('success_message', $response['message']);
+            return redirect(route('admin.news.index'))->with('success_message', $response['message']);
         } catch (\Exception $e) {
             DB::rollBack();
             return redirect()->back()->with('error_message', $e->getMessage())->withInput();

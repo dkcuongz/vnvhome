@@ -72,8 +72,8 @@ class SystemsController extends Controller
             $data = $request->all();
             $system = $this->repository->create($data);
             $images = $request->file('images');
+            $dataImage = [];
             if ($request->hasfile('images')) {
-                $dataImage = [];
                 foreach ($images as $image) {
                     $filename = $image->hashName();
                     Storage::put('images/systems', $image, 'public');
@@ -135,11 +135,17 @@ class SystemsController extends Controller
         try {
             $data = $request->all();
             $system = $this->repository->update($data, $id);
-
             $images = $request->file('images');
-
+            if (count($data['images_uploaded']) > 0) {
+                $pathsRemove = array_diff($data['images_uploaded_origin'], $data['images_uploaded']);
+            } else {
+                $pathsRemove = $data['images_uploaded_origin'];
+            }
+            if (count($pathsRemove) > 0) {
+                $this->imageRepository->deleteWhereIn('path', $pathsRemove);
+            }
+            $dataImage = [];
             if ($request->hasfile('images')) {
-                $dataImage = [];
                 foreach ($images as $image) {
                     $filename = $image->hashName();
                     Storage::put('images/systems', $image, 'public');
@@ -149,15 +155,6 @@ class SystemsController extends Controller
                 }
                 $this->imageRepository->insert($dataImage);
             }
-
-            if (isset($data['images_uploaded'])) {
-                $currentImages = array_column(json_decode($data['images_uploaded_origin']), 'path');
-                $files_remove = array_diff($currentImages, $data['images_uploaded']);
-//                $files = array_merge($data['images_uploaded'], $files);
-            } else {
-                $files_remove = json_decode($data['images_uploaded_origin']);
-            }
-            dd($files_remove);
             $response = [
                 'message' => 'Cập nhật bài viết hệ thống thành công',
                 'data' => $system->toArray(),

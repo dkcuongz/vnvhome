@@ -23,9 +23,11 @@
                         </div>
                         <div class="form-group">
                             <label for="status">Ảnh</label>
-                            <div class="form-check">
+                            <div class="row">
                                 @foreach($system->images as $img)
-                                    <img src="{{asset($img->path)}}" alt="">
+                                    <div class="col-3">
+                                        <img class="img-max-div" src="{{asset($img->path)}}" alt="">
+                                    </div>
                                 @endforeach
                             </div>
                         </div>

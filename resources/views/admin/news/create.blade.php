@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-    <form action="{{route('admin.main-contents.store')}}" method="post" enctype="multipart/form-data" id="upload-image">
+    <form action="{{route('admin.news.store')}}" method="post" enctype="multipart/form-data" id="upload-image">
         @csrf
         <div class="row">
             <div class="col-12">
@@ -63,8 +63,8 @@
 
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">Tạo mới</button>
-                        <a href="{{route('admin.main-contents.index')}}" class="btn btn-default">
-                            Danh sách bài viết sự kiện
+                        <a href="{{route('admin.news.index')}}" class="btn btn-default">
+                            Danh sách bài viết tin tức
                         </a>
                     </div>
                 </div>

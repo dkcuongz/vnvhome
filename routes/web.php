@@ -11,10 +11,10 @@ use App\Http\Controllers\Admin\PostsController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\ContactsController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
-use App\Http\Controllers\Admin\SystemController;
+use App\Http\Controllers\Admin\SystemsController;
 use App\Http\Controllers\Admin\CustomerCareController;
 use CKSource\CKFinderBridge\Controller\CKFinderController;
-use App\Http\Controllers\Admin\MainContentController;
+use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\FrontEnd\InteriorController;
 /*
 |--------------------------------------------------------------------------
@@ -62,7 +62,7 @@ Route::group([
     Route::get('/san-pham/{slug}/{id}', [InteriorController::class, 'show'])
         ->name('san-pham.detail');
 
-    Route::get('/he-thong-vn-vhome', [SystemController::class, 'index'])
+    Route::get('/he-thong-vn-vhome', [SystemsController::class, 'index'])
         ->name('he-thong-vn-vhome');
 
     Route::get('/phan-hoi-khach-hang', [CustomerCareController::class, 'index'])
@@ -100,7 +100,7 @@ Route::group([
     Route::resource('posts', PostsController::class);
     Route::resource('banners', BannerController::class);
     Route::resource('introduce-peoples', \App\Http\Controllers\Admin\IntroducePeoplesController::class);
-    Route::resource('main-contents', MainContentController::class);
+    Route::resource('news', NewsController::class);
     Route::resource('contacts', ContactsController::class);
 });
 

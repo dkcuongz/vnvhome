@@ -246,13 +246,13 @@ return [
             'icon' => 'fa fa-clipboard',
         ],
         [
-            'text' => 'Bài viết',
+            'text' => 'Bài viết thiết kế',
             'url' => '/admin/posts',
             'icon' => 'fa fa-clipboard',
         ],
         [
-            'text' => 'Bài viết sự kiện',
-            'url' => '/admin/main-contents',
+            'text' => 'Bài viết tin tức',
+            'url' => '/admin/news',
             'icon' => 'fa fa-comment',
         ],
         [

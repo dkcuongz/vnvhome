@@ -50,9 +50,8 @@
                                         <div class="wrap-btn-delete"><span data-id="img-{{ $key }}"
                                                                            class="btn-delete-image">x</span></div>
                                     </div>
+                                    <input type="hidden" name="images_uploaded_origin[]" value="{{ $img->path }}">
                                 @endforeach
-                                <input type="hidden" name="images_uploaded_origin" value="{{ $system->images }}">
-                                <input type="hidden" name="id" value="{{ $img->id }}">
                             @endif
                         </div>
                         <div class="form-group">
@@ -78,7 +77,7 @@
                     </div>
 
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Tạo mới</button>
+                        <button type="submit" class="btn btn-primary">Cập nhật</button>
                         <a href="{{route('admin.systems.index')}}" class="btn btn-default">
                             Danh sách bài viết hệ thống
                         </a>
@@ -143,7 +142,11 @@
                         if ($(this).val() !== '')
                             return $(this).val();
                     })
-                    if (countImage.length == 0) {
+                    let oldImage = $("input[name='images_uploaded[]']").map(function () {
+                        if ($(this).val() !== '')
+                            return $(this).val();
+                    })
+                    if (countImage.length == 0 && oldImage.length === 0) {
                         $("#none-image").removeClass("d-none");
                     }
                 });

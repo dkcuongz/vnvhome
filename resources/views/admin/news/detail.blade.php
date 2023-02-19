@@ -39,8 +39,8 @@
                     </div>
 
                     <div class="card-footer">
-                        <a href="{{route('admin.main-contents.index')}}" class="btn btn-default">
-                            Danh sách bài viết sự kiện
+                        <a href="{{route('admin.news.index')}}" class="btn btn-default">
+                            Danh sách bài viết tin tức
                         </a>
                     </div>
                 </div>

@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Chi tiết bài viết')
+@section('title', 'Chi tiết bài viết thiết kế')
 
 @section('content_header')
-    <h1 class="m-0 text-dark">Chi tiết bài viết</h1>
+    <h1 class="m-0 text-dark">Chi tiết bài viết thiết kế</h1>
 @stop
 
 @section('content')
@@ -23,7 +23,16 @@
                             <label for="exampleInputName">Tiêu đề</label>
                             <p>{{ $post->title}}</p>
                         </div>
-
+                        <div class="form-group">
+                            <label for="status">Ảnh</label>
+                            <div class="row">
+                                @foreach($post->images as $img)
+                                    <div class="col-3">
+                                        <img class="img-max-div" src="{{asset($img->path)}}" alt="">
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
                         <div class="form-group">
                             <label for="exampleInputEmail">Nội dung</label>
                             <div>{!!$post->description!!}</div>
@@ -40,7 +49,7 @@
 
                     <div class="card-footer">
                         <a href="{{route('admin.posts.index')}}" class="btn btn-default">
-                            Danh sách bài viết
+                            Danh sách bài viết thiết kế
                         </a>
                     </div>
                 </div>

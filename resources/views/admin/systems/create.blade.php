@@ -37,19 +37,6 @@
                                  alt="preview image" style="max-height: 250px;">
                         </div>
                         <div class="list-images">
-                            @if (isset($list_images) && !empty($list_images))
-                                @foreach (json_decode($list_images) as $key => $img)
-                                    <div class="box-image">
-                                        <input type="hidden" name="images_uploaded[]" value="{{ $img }}"
-                                               id="img-{{ $key }}">
-                                        <img src="{{ asset('files/'.$img) }}" class="picture-box">
-                                        <div class="wrap-btn-delete"><span data-id="img-{{ $key }}"
-                                                                           class="btn-delete-image">x</span></div>
-                                    </div>
-                                @endforeach
-                                <input type="hidden" name="images_uploaded_origin" value="{{ $list_images }}">
-                                <input type="hidden" name="id" value="{{ $id }}">
-                            @endif
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail">Nội dung</label>

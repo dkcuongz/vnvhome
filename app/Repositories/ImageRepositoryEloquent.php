@@ -4,7 +4,6 @@ namespace App\Repositories;
 
 use App\Entities\Image;
 use App\Validators\ImageValidator;
-use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 
 /**

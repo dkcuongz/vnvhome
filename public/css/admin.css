@@ -11,16 +11,22 @@
     line-clamp: 5;
     -webkit-box-orient: vertical;
 }
-.summary-content img{
+
+.summary-content img {
     width: fit-content !important;
     max-height: 400px !important;
 }
+
 .list-images {
     width: 50%;
     margin-top: 20px;
     display: inline-block;
 }
-.hidden { display: none; }
+
+.hidden {
+    display: none;
+}
+
 .box-image {
     width: 100px;
     height: 108px;
@@ -28,10 +34,12 @@
     float: left;
     margin-left: 5px;
 }
+
 .box-image img {
     width: 100px;
     height: 100px;
 }
+
 .wrap-btn-delete {
     position: absolute;
     top: -8px;
@@ -41,9 +49,17 @@
     font-weight: bold;
     color: red;
 }
+
 .btn-delete-image {
     cursor: pointer;
 }
+
 .table {
     width: 15%;
+}
+
+.img-max-div {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }

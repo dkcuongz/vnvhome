@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Danh sách bài viết sự kiện')
+@section('title', 'Danh sách bài viết tin tức')
 
 @section('content_header')
-    <h1 class="m-0 text-dark">Danh sách bài viết sự kiện</h1>
+    <h1 class="m-0 text-dark">Danh sách bài viết tin tức</h1>
 @stop
 
 @section('content')
@@ -12,7 +12,7 @@
             <div class="card">
                 <div class="card-body">
 
-                    <a href="{{route('admin.main-contents.create')}}" class="btn btn-primary mb-2">
+                    <a href="{{route('admin.news.create')}}" class="btn btn-primary mb-2">
                         Tạo mới
                     </a>
 
@@ -38,13 +38,13 @@
                                 </td>
                                 <th><p class="font-weight-normal">{{$post->status ? 'Hiển thị' :'Ẩn' }}</p></th>
                                 <td class="text-center">
-                                    <a href="{{route('admin.main-contents.show', $post)}}" class="btn btn-primary btn-xs">
+                                    <a href="{{route('admin.news.show', $post)}}" class="btn btn-primary btn-xs">
                                         Chi tiết
                                     </a>
-                                    <a href="{{route('admin.main-contents.edit', $post)}}" class="btn btn-primary btn-xs">
+                                    <a href="{{route('admin.news.edit', $post)}}" class="btn btn-primary btn-xs">
                                         Sửa
                                     </a>
-                                    <a href="{{route('admin.main-contents.destroy', $post)}}"
+                                    <a href="{{route('admin.news.destroy', $post)}}"
                                        onclick="notificationBeforeDelete(event, this)" class="btn btn-danger btn-xs">
                                         Xóa
                                     </a>

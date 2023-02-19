@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Danh sách bài viết')
+@section('title', 'Danh sách bài viết thiết kế')
 
 @section('content_header')
-    <h1 class="m-0 text-dark">Danh sách bài viết</h1>
+    <h1 class="m-0 text-dark">Danh sách bài viết thiết kế</h1>
 @stop
 
 @section('content')
@@ -11,11 +11,9 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-
                     <a href="{{route('admin.posts.create')}}" class="btn btn-primary mb-2">
                         Tạo mới
                     </a>
-
                     <table class="table table-hover table-bordered table-stripped" id="example2">
                         <thead>
                         <tr>
@@ -33,7 +31,7 @@
                                 <td>{{$post->title}}</td>
                                 <td>
                                     <div class="summary-content"><img
-                                            src="{{asset($post->image->path ?? 'images-UI/notfound.jpg')}}" alt="">
+                                            src="{{asset($post->images->first()->path ?? 'images-UI/notfound.jpg')}}" alt="">
                                     </div>
                                 </td>
                                 <th><p class="font-weight-normal">{{$post->status ? 'Hiển thị' :'Ẩn' }}</p></th>

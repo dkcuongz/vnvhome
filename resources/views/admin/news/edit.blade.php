@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-    <form action="{{route('admin.news.update', $post)}}" method="post" enctype="multipart/form-data" id="upload-image">
+    <form action="{{route('admin.news.update', $new)}}" method="post" enctype="multipart/form-data" id="upload-image">
         @method('PUT')
         @csrf
         <div class="row">
@@ -26,7 +26,7 @@
                             <label for="exampleInputName">Tiêu đề</label>
                             <input type="text" class="form-control @error('title') is-invalid @enderror"
                                    id="exampleInputName" placeholder="Tiêu đề" name="title"
-                                   value="{{old('title') ?? $post->title}}">
+                                   value="{{old('title') ?? $new->title}}">
                             @error('title') <span class="text-danger">{{$message}}</span> @enderror
                         </div>
                         <div class="form-group">
@@ -39,14 +39,14 @@
                         </div>
                         <div class="col-md-12 mb-2">
                             <img id="preview-image-before-upload"
-                                 src="{{asset($post->image->path ?? 'images-UI/notfound.jpg')}}"
+                                 src="{{asset($new->image->path ?? 'images-UI/notfound.jpg')}}"
                                  alt="preview image" style="max-height: 250px;">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail">Nội dung</label>
                             <textarea class="summernote form-control @error('description') is-invalid @enderror"
                                       id="text" cols="30" rows="10" placeholder="Mô tả"
-                                      name="description">{{old('description') ?? $post->description}}</textarea>
+                                      name="description">{{old('description') ?? $new->description}}</textarea>
                             @error('description') <span class="text-danger">{{$message}}</span> @enderror
                             @include('ckfinder::setup')
                         </div>
@@ -54,7 +54,7 @@
                             <label for="status">Trạng thái</label>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox"
-                                       {{ $post->status == '1' ? 'checked' : '' }} name="status" id="status" value="1">
+                                       {{ $new->status == '1' ? 'checked' : '' }} name="status" id="status" value="1">
                                 <label class="form-check-label" for="flexRadioDefault1">
                                     Hoạt động
                                 </label>

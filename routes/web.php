@@ -15,7 +15,7 @@ use App\Http\Controllers\Admin\SystemsController;
 use App\Http\Controllers\Admin\CustomerCareController;
 use CKSource\CKFinderBridge\Controller\CKFinderController;
 use App\Http\Controllers\Admin\NewsController;
-use App\Http\Controllers\FrontEnd\InteriorController;
+use App\Http\Controllers\FrontEnd\PostsController as FrontPostsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -53,13 +53,13 @@ Route::group([
     Route::get('/trang-chu', [HomeController::class, 'index'])
         ->name('trang-chu');
 
-    Route::get('/san-pham', [InteriorController::class, 'index'])
+    Route::get('/san-pham', [FrontPostsController::class, 'index'])
         ->name('san-pham');
 
-    Route::get('/san-pham/{slug}', [InteriorController::class, 'byCategory'])
+    Route::get('/san-pham/{slug}', [FrontPostsController::class, 'byCategory'])
         ->name('san-pham.child');
 
-    Route::get('/san-pham/{slug}/{id}', [InteriorController::class, 'show'])
+    Route::get('/san-pham/{slug}/{id}', [FrontPostsController::class, 'show'])
         ->name('san-pham.detail');
 
     Route::get('/he-thong-vn-vhome', [SystemsController::class, 'index'])

@@ -6,7 +6,7 @@
     @include('components.nav')
     @include('components.about-us')
     @include('components.people')
-    @include('components.carousel')
+{{--    @include('components.carousel')--}}
     @include('components.box-why-choose')
     @include('components.box-product-featured')
     @include('components.box-space-option')

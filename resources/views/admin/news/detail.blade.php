@@ -12,27 +12,33 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
+                        <label for="exampleInputName">Danh mục</label>
                         <div class="form-group">
                             @foreach ($categories as $subcategory)
-                                @if($subcategory->id == $post->category_id)
+                                @if($subcategory->id == $new->category_id)
                                     <lable>{{ $subcategory->name}}</lable>
                                 @endif
                             @endforeach
                         </div>
                         <div class="form-group">
                             <label for="exampleInputName">Tiêu đề</label>
-                            <p>{{ $post->title}}</p>
+                            <p>{{ $new->title}}</p>
                         </div>
-
+                        <label for="exampleInputName">Ảnh</label>
+                        <div class="form-group">
+                            <img id="preview-image-before-upload"
+                                 src="{{asset($new->image->path ?? 'images-UI/notfound.jpg')}}"
+                                 alt="preview image" style="max-height: 250px;">
+                        </div>
                         <div class="form-group">
                             <label for="exampleInputEmail">Nội dung</label>
-                            <div>{!!$post->description!!}</div>
+                            <div>{!!$new->description!!}</div>
                         </div>
                         <div class="form-group">
                             <label for="status">Trạng thái</label>
                             <div class="form-check">
                                 <label class="form-check-label" for="flexRadioDefault1">
-                                    {{ $post->status == '1' ? 'Hoạt động' : 'Ẩn' }}
+                                    {{ $new->status == '1' ? 'Hoạt động' : 'Ẩn' }}
                                 </label>
                             </div>
                         </div>

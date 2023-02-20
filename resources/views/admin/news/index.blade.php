@@ -27,24 +27,24 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($posts as $key => $post)
+                        @foreach($news as $key => $new)
                             <tr>
                                 <td>{{$key+1}}</td>
-                                <td>{{$post->title}}</td>
+                                <td>{{$new->title}}</td>
                                 <td>
                                     <div class="summary-content"><img
-                                            src="{{asset($post->image->path ?? 'images-UI/notfound.jpg')}}" alt="">
+                                            src="{{asset($new->image->path ?? 'images-UI/notfound.jpg')}}" alt="">
                                     </div>
                                 </td>
-                                <th><p class="font-weight-normal">{{$post->status ? 'Hiển thị' :'Ẩn' }}</p></th>
+                                <th><p class="font-weight-normal">{{$new->status ? 'Hiển thị' :'Ẩn' }}</p></th>
                                 <td class="text-center">
-                                    <a href="{{route('admin.news.show', $post)}}" class="btn btn-primary btn-xs">
+                                    <a href="{{route('admin.news.show', $new)}}" class="btn btn-primary btn-xs">
                                         Chi tiết
                                     </a>
-                                    <a href="{{route('admin.news.edit', $post)}}" class="btn btn-primary btn-xs">
+                                    <a href="{{route('admin.news.edit', $new)}}" class="btn btn-primary btn-xs">
                                         Sửa
                                     </a>
-                                    <a href="{{route('admin.news.destroy', $post)}}"
+                                    <a href="{{route('admin.news.destroy', $new)}}"
                                        onclick="notificationBeforeDelete(event, this)" class="btn btn-danger btn-xs">
                                         Xóa
                                     </a>

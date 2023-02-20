@@ -2,9 +2,8 @@
 
 namespace App\Repositories;
 
-use App\Entities\Post;
+use App\Entities\News;
 use App\Validators\PostValidator;
-use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 
 /**
@@ -21,7 +20,7 @@ class NewsRepositoryEloquent extends BaseRepositoryEloquent implements NewsRepos
      */
     public function model()
     {
-        return Post::class;
+        return News::class;
     }
 
     /**
@@ -32,7 +31,6 @@ class NewsRepositoryEloquent extends BaseRepositoryEloquent implements NewsRepos
     public function validator()
     {
 
-        return PostValidator::class;
     }
 
 

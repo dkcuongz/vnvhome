@@ -8,6 +8,8 @@ use App\Http\Requests\NewsUpdateRequest;
 use App\Repositories\CategoriesRepository;
 use App\Repositories\ImageRepository;
 use App\Repositories\NewsRepository;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class NewsController extends Controller
 {
@@ -29,7 +31,7 @@ class NewsController extends Controller
     protected $categoryRepository;
 
     /**
-     * postsController constructor.
+     * newsController constructor.
      *
      * @param NewsRepository $repository
      * @param ImageRepository $imageRepository
@@ -49,12 +51,12 @@ class NewsController extends Controller
      */
     public function index()
     {
-        $posts = $this->repository->with('image')->whereHas('category', function ($query) {
+        $news = $this->repository->with('image')->whereHas('category', function ($query) {
             $query->whereHas('parent', function ($subQuery) {
                 $subQuery->where(['id' => 5]);
             });
-        })->where('type',config('constants.post.type.new'))->get();
-        return view('admin.news.index', compact('posts'));
+        })->get();
+        return view('admin.news.index', compact('news'));
     }
 
 
@@ -76,20 +78,19 @@ class NewsController extends Controller
         DB::beginTransaction();
         try {
             $data = $request->all();
-            $data['type'] = config('constants.post.type.new');
-            $post = $this->repository->create($data);
+            $new = $this->repository->create($data);
             if ($request->file('image')) {
                 $file = $request->file('image');
                 $filename = $file->hashName();
                 Storage::put('images', $file, 'public');
                 $dataImage['path'] = 'images/' . $filename;
-                $dataImage['post_id'] = $post->id;
+                $dataImage['post_id'] = $new->id;
                 $this->imageRepository->create($dataImage);
 
             }
             $response = [
                 'message' => 'Tạo mới bài viết thành công.',
-                'data' => $post->toArray(),
+                'data' => $new->toArray(),
             ];
             DB::commit();
             return redirect(route('admin.news.index'))->with('success_message', $response['message']);
@@ -109,8 +110,8 @@ class NewsController extends Controller
     public function show($id)
     {
         $categories = $this->categoryRepository->with(['allLevelChildren'])->where('parent_id', '=', 5)->get();
-        $post = $this->repository->with('image')->find($id);
-        return view('admin.news.detail', compact('post', 'categories'));
+        $new = $this->repository->with('image')->find($id);
+        return view('admin.news.detail', compact('new', 'categories'));
     }
 
     /**
@@ -123,8 +124,8 @@ class NewsController extends Controller
     public function edit($id)
     {
         $categories = $this->categoryRepository->with(['allLevelChildren'])->where('parent_id', '=', 5)->get();
-        $post = $this->repository->with('image')->find($id);
-        return view('admin.news.edit', compact('post', 'categories'));
+        $new = $this->repository->with('image')->find($id);
+        return view('admin.news.edit', compact('new', 'categories'));
     }
 
     /**
@@ -140,20 +141,19 @@ class NewsController extends Controller
         DB::beginTransaction();
         try {
             $data = $request->all();
-            $data['type'] = config('constants.post.type.new');
-            $post = $this->repository->update($data, $id);
+            $new = $this->repository->update($data, $id);
             if ($request->file('image')) {
                 $file = $request->file('image');
                 $filename = $file->hashName();
                 Storage::put('images', $file, 'public');
                 $dataImage['path'] = 'images/' . $filename;
-                $dataImage['post_id'] = $post->id;
-                $this->imageRepository->where('post_id', $post->id)->delete();
+                $dataImage['post_id'] = $new->id;
+                $this->imageRepository->where('post_id', $new->id)->delete();
                 $this->imageRepository->create($dataImage);
             }
             $response = [
                 'message' => 'Cập nhật bài viết thành công',
-                'data' => $post->toArray(),
+                'data' => $new->toArray(),
             ];
             DB::commit();
             return redirect(route('admin.news.index'))->with('success_message', $response['message']);
@@ -173,9 +173,9 @@ class NewsController extends Controller
      */
     public function destroy($id)
     {
-        $post = $this->repository->find($id);
-        $post->images()->delete();
-        $post->delete();
+        $new = $this->repository->find($id);
+        $new->images()->delete();
+        $new->delete();
         return redirect()->back()->with('success_message', 'Xóa bài viết thành công');
     }
 }

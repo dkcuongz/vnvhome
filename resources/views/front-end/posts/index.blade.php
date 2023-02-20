@@ -11,10 +11,10 @@
         <div class="row align-center">
             <div class="large-10 col">
                 <div id="row-1983341037" class="row large-columns-3 medium-columns- small-columns-1 row-masonry">
-                    @foreach($projects as $project)
+                    @foreach($posts as $post)
                         <div class="col post-item">
                             <div class="col-inner">
-                                <a href="{{route('du-an.detail', $post->id)}}" class="plain">
+                                <a href="{{route('front.san-pham.detail', [$post->category->slug ?? '', $post->id])}}" class="plain">
                                     <div class="box box-text-bottom box-blog-post has-hover">
                                         <div class="box-image">
                                             <div class="image-cover" style="padding-top:56%;">

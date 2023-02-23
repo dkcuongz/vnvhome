@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\FrontEnd;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\IntroducePeopleRepository;
 use App\Repositories\PostRepository;
+use App\Repositories\SystemRepository;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -15,14 +17,21 @@ class HomeController extends Controller
      */
     protected $postRepository;
 
+    protected $systemRepository;
+
+    protected $peopleRepository;
+
     /**
      * categoriesController constructor.
      *
      * @param PostRepository $postRepository
+     * @param SystemRepository $systemRepository
      */
-    public function __construct(PostRepository $postRepository)
+    public function __construct(PostRepository $postRepository, SystemRepository $systemRepository, IntroducePeopleRepository $peopleRepository)
     {
         $this->postRepository = $postRepository;
+        $this->systemRepository = $systemRepository;
+        $this->peopleRepository = $peopleRepository;
     }
 
     /**
@@ -32,7 +41,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts = $this->postRepository->with('images')->orderBy('created_at','DESC')->take(15)->get();
-        return view('front-end.home.index', compact('posts'));
+        $posts = $this->postRepository->with('images')->orderBy('created_at', 'DESC')->take(15)->get();
+        $systems = $this->systemRepository->with('images')->orderBy('created_at', 'DESC')->take(15)->get();
+        $peoples = $this->peopleRepository->with('image')->orderBy('created_at', 'DESC')->take(15)->get();
+        return view('front-end.home.index', compact('posts', 'systems', 'peoples'));
     }
 }

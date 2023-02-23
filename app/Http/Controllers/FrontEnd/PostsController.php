@@ -54,7 +54,7 @@ class PostsController extends Controller
                 $subQuery->where(['id' => 2]);
             });
         })->get();
-        return view('admin.posts.index', compact('posts'));
+        return view('front-end.posts.index', compact('posts'));
     }
 
 

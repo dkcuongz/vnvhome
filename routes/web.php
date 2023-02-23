@@ -2,9 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontEnd\HomeController;
-
 use App\Http\Controllers\FrontEnd\BlogController;
-use App\Http\Controllers\FrontEnd\ContactController;
+use App\Http\Controllers\FrontEnd\ContactController as FrontContactController;
+use App\Http\Controllers\FrontEnd\SystemController as FrontSystemsController;
+use App\Http\Controllers\FrontEnd\PostsController as FrontPostsController;
+
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\PostsController;
@@ -15,7 +17,7 @@ use App\Http\Controllers\Admin\SystemsController;
 use App\Http\Controllers\Admin\CustomerCareController;
 use CKSource\CKFinderBridge\Controller\CKFinderController;
 use App\Http\Controllers\Admin\NewsController;
-use App\Http\Controllers\FrontEnd\PostsController as FrontPostsController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -62,8 +64,11 @@ Route::group([
     Route::get('/san-pham/{slug}/{id}', [FrontPostsController::class, 'show'])
         ->name('san-pham.detail');
 
-    Route::get('/he-thong-vn-vhome', [SystemsController::class, 'index'])
+    Route::get('/he-thong-vn-vhome', [FrontSystemsController::class, 'index'])
         ->name('he-thong-vn-vhome');
+
+    Route::get('/he-thong-vn-vhome/{id}', [FrontSystemsController::class, 'show'])
+        ->name('he-thong-vn-vhome.detail');
 
     Route::get('/phan-hoi-khach-hang', [CustomerCareController::class, 'index'])
         ->name('phan-hoi-khach-hang');
@@ -77,10 +82,10 @@ Route::group([
     Route::get('/tin-tuc/{slug}/{id}', [BlogController::class, 'show'])
         ->name('tin-tuc-blog.detail');
 
-    Route::get('/dang-ky-tu-van', [ContactController::class, 'index'])
+    Route::get('/dang-ky-tu-van', [FrontContactController::class, 'index'])
         ->name('dang-ky-tu-van');
 
-    Route::post('/dang-ky-tu-van', [ContactController::class, 'store'])
+    Route::post('/dang-ky-tu-van', [FrontContactController::class, 'store'])
         ->name('dang-ky-tu-van.store');
 
 });
@@ -96,7 +101,7 @@ Route::group([
         ->name('home');
     Route::resource('users', UsersController::class);
     Route::resource('categories', CategoriesController::class);
-    Route::resource('systems', \App\Http\Controllers\Admin\SystemsController::class);
+    Route::resource('systems', SystemsController::class);
     Route::resource('posts', PostsController::class);
     Route::resource('banners', BannerController::class);
     Route::resource('introduce-peoples', \App\Http\Controllers\Admin\IntroducePeoplesController::class);

@@ -3,7 +3,7 @@
 @section('title', 'Dự án')
 
 @section('content_header')
-    <h1 class="m-0 text-dark">Dự án</h1>
+    <h1 class="m-0 text-dark">Sản phẩm</h1>
 @stop
 
 @section('content')

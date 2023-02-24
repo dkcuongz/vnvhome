@@ -9,7 +9,7 @@
                             <a href="{{route('front.he-thong-vn-vhome.detail',$system->id)}}" title="{{$system->title}}"
                                class="overlay"></a>
                             <img
-                                src="{{asset($system->image->path)}}"
+                                src="{{asset($system->images->first()->path)}}"
                                 alt="{{$system->title}}" class="center-block img-responsive">
                             <div class="info">
                                 <a href="{{route('front.he-thong-vn-vhome.detail',$system->id)}}"

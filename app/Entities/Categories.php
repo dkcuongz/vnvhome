@@ -37,6 +37,10 @@ class Categories extends Model implements Transformable
         return $this->hasMany(Categories::class, 'parent_id')->select('*')->with('allLevelChildrenWithSubChild');
     }
 
+    public function image()
+    {
+        return $this->hasOne(Image::class, 'category_id');
+    }
     /**
      * Get the route key for the model.
      *

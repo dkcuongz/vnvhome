@@ -4,14 +4,17 @@
         <div class="box-info">
             <div class="owl-carousel owl-theme">
                 @foreach($peoples as $people)
-                <div class="item wow fadeInUp animated">
-                    <div class="img">
-                        <img src="{{asset($people->image->path)}}" alt="{{$people->title}}" class="center-block">
+                    <div class="item wow fadeInUp animated">
+                        <div class="img">
+                            <img style="width: 230px;height: 230px" src="{{asset($people->image->path)}}"
+                                 alt="{{$people->title}}" class="center-block">
+                        </div>
+                        <div class="info">
+                            <br>
+                            {{$people->description}}
+                            <br>
+                        </div>
                     </div>
-                    <div class="info">
-                       {{$people->description}}
-                    </div>
-                </div>
                 @endforeach
             </div>
             <script>

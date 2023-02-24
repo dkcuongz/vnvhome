@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Danh sách danh mục')
+@section('title', 'Danh mục sản phẩm')
 
 @section('content_header')
-    <h1 class="m-0 text-dark">Danh sách danh mục</h1>
+    <h1 class="m-0 text-dark">Danh mục sản phẩm</h1>
 @stop
 
 @section('content')

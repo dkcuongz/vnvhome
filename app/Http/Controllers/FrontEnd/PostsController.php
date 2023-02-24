@@ -49,12 +49,13 @@ class PostsController extends Controller
      */
     public function index()
     {
+        $categories = $this->categoryRepository->where('parent_id', '=', 2)->with('image')->get();
         $posts = $this->repository->with('images')->whereHas('category', function ($query) {
             $query->whereHas('parent', function ($subQuery) {
                 $subQuery->where(['id' => 2]);
             });
-        })->get();
-        return view('front-end.posts.index', compact('posts'));
+        })->orderBy('created_at', 'DESC')->take(6)->get();
+        return view('front-end.posts.index', compact('posts', 'categories'));
     }
 
 

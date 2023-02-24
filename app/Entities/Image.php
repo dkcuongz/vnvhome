@@ -14,5 +14,11 @@ class Image extends Model implements Transformable
     protected $fillable = [
         'post_id',
         'path',
+        'post_id',
+        'banner_id',
+        'people_id',
+        'system_id',
+        'category_id',
+        'new_id',
     ];
 }

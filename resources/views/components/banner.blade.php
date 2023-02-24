@@ -7,7 +7,7 @@
                         data-thumb="{{asset($banner->image->path)}}">
                         <img src="{{asset($banner->image->path)}}" alt="Trách nhiệm - Trung thực - Tận tâm"
                              title="Trách nhiệm - Trung thực - Tận tâm"
-                             data-lazyload="{{asset('images-UI/banner-1.jpg')}}" data-bgposition="left top"
+                             data-lazyload="{{asset($banner->image->path)}}" data-bgposition="left top"
                              data-bgfit="cover" data-bgrepeat="no-repeat">
                         <span class="slider-overlay hidden-xs"></span>
                         <div class="caption lft ltb slide-title hidden-xs" data-x="center" data-y="center"

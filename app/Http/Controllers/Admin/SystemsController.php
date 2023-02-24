@@ -78,7 +78,7 @@ class SystemsController extends Controller
                     $filename = $image->hashName();
                     Storage::put('images/systems', $image, 'public');
                     $newImage['path'] = 'images/systems/' . $filename;
-                    $newImage['post_id'] = $system->id;
+                    $newImage['system_id'] = $system->id;
                     array_push($dataImage, $newImage);
                 }
                 $this->imageRepository->insert($dataImage);
@@ -150,7 +150,7 @@ class SystemsController extends Controller
                     $filename = $image->hashName();
                     Storage::put('images/systems', $image, 'public');
                     $newImage['path'] = 'images/systems/' . $filename;
-                    $newImage['post_id'] = $system->id;
+                    $newImage['system_id'] = $system->id;
                     array_push($dataImage, $newImage);
                 }
                 $this->imageRepository->insert($dataImage);

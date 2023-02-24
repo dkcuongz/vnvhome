@@ -84,9 +84,8 @@ class NewsController extends Controller
                 $filename = $file->hashName();
                 Storage::put('images', $file, 'public');
                 $dataImage['path'] = 'images/' . $filename;
-                $dataImage['post_id'] = $new->id;
+                $dataImage['new_id'] = $new->id;
                 $this->imageRepository->create($dataImage);
-
             }
             $response = [
                 'message' => 'Tạo mới bài viết thành công.',
@@ -147,9 +146,9 @@ class NewsController extends Controller
                 $filename = $file->hashName();
                 Storage::put('images', $file, 'public');
                 $dataImage['path'] = 'images/' . $filename;
-                $dataImage['post_id'] = $new->id;
-                $this->imageRepository->where('post_id', $new->id)->delete();
-                $this->imageRepository->create($dataImage);
+                $image = $this->imageRepository->where('new_id', $new->id)->first();
+                Storage::delete($image->path);
+                $image->update(['path' => $dataImage['path']]);
             }
             $response = [
                 'message' => 'Cập nhật bài viết thành công',

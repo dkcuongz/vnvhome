@@ -77,7 +77,7 @@ class IntroducePeoplesController extends Controller
                 $filename = $file->hashName();
                 Storage::put('images/introduce-peoples', $file, 'public');
                 $dataImage['path'] = 'images/introduce-peoples/' . $filename;
-                $dataImage['post_id'] = $introducePeople->id;
+                $dataImage['people_id'] = $introducePeople->id;
                 $this->imageRepository->create($dataImage);
 
             }
@@ -139,9 +139,9 @@ class IntroducePeoplesController extends Controller
                 $filename = $file->hashName();
                 Storage::put('images/introduce-peoples', $file, 'public');
                 $dataImage['path'] = 'images/introduce-peoples/' . $filename;
-                $dataImage['post_id'] = $introducePeople->id;
-                $this->imageRepository->where('post_id', $introducePeople->id)->delete();
-                $this->imageRepository->create($dataImage);
+                $image = $this->imageRepository->where('people_id', $introducePeople->id)->first();
+                Storage::delete($image->path);
+                $image->update(['path' => $dataImage['path']]);
             }
 
             $response = [

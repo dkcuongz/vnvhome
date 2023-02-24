@@ -70,7 +70,7 @@ class BannerController extends Controller
                 $filename = $file->hashName();
                 Storage::put('images/banner', $file, 'public');
                 $dataImage['path'] = 'images/banner/' . $filename;
-                $dataImage['post_id'] = $banner->id;
+                $dataImage['banner_id'] = $banner->id;
                 $this->imageRepository->create($dataImage);
 
             }
@@ -82,7 +82,7 @@ class BannerController extends Controller
             return redirect(route('admin.banners.index'))->with('success_message', $response['message']);
         } catch (\Exception $e) {
             DB::rollBack();
-            return redirect()->back()->with('error_message',$e->getMessage())->withInput();
+            return redirect()->back()->with('error_message', $e->getMessage())->withInput();
         }
     }
 
@@ -132,9 +132,9 @@ class BannerController extends Controller
                 $filename = $file->hashName();
                 Storage::put('images/banner', $file, 'public');
                 $dataImage['path'] = 'images/banner/' . $filename;
-                $dataImage['post_id'] = $banner->id;
-                $this->imageRepository->where('post_id', $banner->id)->delete();
-                $this->imageRepository->create($dataImage);
+                $image = $this->imageRepository->where('banner_id', $banner->id)->first();
+                Storage::delete($image->path);
+                $image->update(['path' => $dataImage['path']]);
             }
 
             $response = [
@@ -145,7 +145,7 @@ class BannerController extends Controller
             return redirect(route('admin.banners.index'))->with('success_message', $response['message']);
         } catch (\Exception $e) {
             DB::rollBack();
-            return redirect()->back()->with('error_message',$e->getMessage())->withInput();
+            return redirect()->back()->with('error_message', $e->getMessage())->withInput();
         }
     }
 

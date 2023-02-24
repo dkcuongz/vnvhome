@@ -31,6 +31,6 @@ class System extends Model implements Transformable
 
     public function images()
     {
-        return $this->hasMany(Image::class, 'post_id');
+        return $this->hasMany(Image::class, 'system_id');
     }
 }

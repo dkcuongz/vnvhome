@@ -30,7 +30,7 @@
                             <textarea class="summernote form-control @error('description') is-invalid @enderror"
                                       id="text" cols="30" rows="10" placeholder="Mô tả" name="description"{{old('description')}}></textarea>
                         </div>
-
+                        <label for="exampleInputEmail">Ảnh</label>
                         <div class="form-group">
                             <input type="file" name="image" placeholder="Chọn ảnh" id="image">
                             @error('image')

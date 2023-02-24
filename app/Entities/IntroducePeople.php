@@ -31,6 +31,6 @@ class IntroducePeople extends Model implements Transformable
 
     public function image()
     {
-        return $this->hasOne(Image::class, 'post_id');
+        return $this->hasOne(Image::class, 'people_id');
     }
 }

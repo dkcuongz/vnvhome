@@ -40,7 +40,7 @@
                             @error('description') <span class="text-danger">{{$message}}</span> @enderror
                             @include('ckfinder::setup')
                         </div>
-
+                        <label for="exampleInputEmail">Ảnh</label>
                         <div class="form-group">
                             <input type="file" name="image" placeholder="Chọn ảnh" id="image">
                             @error('image')

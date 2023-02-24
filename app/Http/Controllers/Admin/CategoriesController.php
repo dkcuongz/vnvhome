@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoriesCreateRequest;
 use App\Http\Requests\CategoriesUpdateRequest;
 use App\Repositories\CategoriesRepository;
+use App\Repositories\ImageRepository;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class CategoriesController extends Controller
@@ -16,13 +18,20 @@ class CategoriesController extends Controller
     protected $repository;
 
     /**
+     * @var ImageRepository
+     */
+    protected $imageRepository;
+
+    /**
      * categoriesController constructor.
      *
      * @param CategoriesRepository $repository
+     * @param ImageRepository $imageRepository
      */
-    public function __construct(CategoriesRepository $repository)
+    public function __construct(CategoriesRepository $repository, ImageRepository $imageRepository)
     {
         $this->repository = $repository;
+        $this->imageRepository = $imageRepository;
     }
 
     /**
@@ -32,7 +41,7 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        $categories = $this->repository->where('parent_id', '=', 2)->get();
+        $categories = $this->repository->where('parent_id', '=', 2)->with('image')->get();
         return view('admin.categories.index', compact('categories'));
     }
 
@@ -58,6 +67,14 @@ class CategoriesController extends Controller
             $data = $request->all();
             $data['slug'] = Str::slug($request->name);
             $category = $this->repository->create($data);
+            if ($request->file('image')) {
+                $file = $request->file('image');
+                $filename = $file->hashName();
+                Storage::put('images/categories', $file, 'public');
+                $dataImage['path'] = 'images/categories/' . $filename;
+                $dataImage['category_id'] = $category->id;
+                $this->imageRepository->create($dataImage);
+            }
             $response = [
                 'message' => 'category created.',
                 'data' => $category->toArray(),
@@ -76,7 +93,7 @@ class CategoriesController extends Controller
      */
     public function show($slug)
     {
-        $category = $this->repository->where('slug', $slug)->first();
+        $category = $this->repository->where('slug', $slug)->with('image')->first();
         $categories = $this->repository->where('id', '=', 2)->with(['allLevelChildren'])->get();
         return view('admin.categories.show', compact('category', 'categories'));
     }
@@ -89,7 +106,7 @@ class CategoriesController extends Controller
      */
     public function edit($slug)
     {
-        $category = $this->repository->where('slug', $slug)->first();
+        $category = $this->repository->where('slug', $slug)->with('image')->first();
         $categories = $this->repository->where('id', '=', 2)->with(['allLevelChildren'])->get();
         return view('admin.categories.edit', compact('category', 'categories'));
     }
@@ -109,6 +126,15 @@ class CategoriesController extends Controller
             $data = $request->all();
             $data['slug'] = Str::slug($request->name);
             $categoryUpdate = $this->repository->update($data, $category->id);
+            if ($request->file('image')) {
+                $file = $request->file('image');
+                $filename = $file->hashName();
+                Storage::put('images/categories', $file, 'public');
+                $dataImage['path'] = 'images/categories/' . $filename;
+                $image = $this->imageRepository->where('category_id', $category->id)->first();
+                Storage::delete($image->path);
+                $image->update(['path' => $dataImage['path']]);
+            }
             $response = [
                 'message' => 'Category updated.',
                 'data' => $categoryUpdate->toArray(),

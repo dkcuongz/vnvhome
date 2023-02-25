@@ -20,5 +20,6 @@ class Image extends Model implements Transformable
         'system_id',
         'category_id',
         'new_id',
+        'customer_care_id'
     ];
 }

@@ -31,7 +31,6 @@ class ContactRepositoryEloquent extends BaseRepositoryEloquent implements Contac
      */
     public function validator()
     {
-
         return ContactValidator::class;
     }
 

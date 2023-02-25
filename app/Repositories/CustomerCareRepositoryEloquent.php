@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Entities\Banner;
+use App\Entities\CustomerCare;
 use App\Validators\PostValidator;
 use Prettus\Repository\Criteria\RequestCriteria;
 
@@ -11,7 +12,7 @@ use Prettus\Repository\Criteria\RequestCriteria;
  *
  * @package namespace App\Repositories;
  */
-class BannerRepositoryEloquent extends BaseRepositoryEloquent implements BannerRepository
+class CustomerCareRepositoryEloquent extends BaseRepositoryEloquent implements CustomerCareRepository
 {
     /**
      * Specify Model class name
@@ -20,7 +21,7 @@ class BannerRepositoryEloquent extends BaseRepositoryEloquent implements BannerR
      */
     public function model()
     {
-        return Banner::class;
+        return CustomerCare::class;
     }
 
     /**

@@ -2,10 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontEnd\HomeController;
-use App\Http\Controllers\FrontEnd\BlogController;
+use App\Http\Controllers\FrontEnd\NewController;
 use App\Http\Controllers\FrontEnd\ContactController as FrontContactController;
 use App\Http\Controllers\FrontEnd\SystemController as FrontSystemsController;
 use App\Http\Controllers\FrontEnd\PostsController as FrontPostsController;
+use App\Http\Controllers\FrontEnd\CustomerCareController as FrontCustomerCareController;
 
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\CategoriesController;
@@ -17,6 +18,7 @@ use App\Http\Controllers\Admin\SystemsController;
 use App\Http\Controllers\Admin\CustomerCareController;
 use CKSource\CKFinderBridge\Controller\CKFinderController;
 use App\Http\Controllers\Admin\NewsController;
+use \App\Http\Controllers\Admin\IntroducePeoplesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +30,6 @@ use App\Http\Controllers\Admin\NewsController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 
 
 Route::any('/ckfinder/connector', [CKFinderController::class, 'requestAction'])
@@ -70,16 +71,16 @@ Route::group([
     Route::get('/he-thong-vn-vhome/{id}', [FrontSystemsController::class, 'show'])
         ->name('he-thong-vn-vhome.detail');
 
-    Route::get('/phan-hoi-khach-hang', [CustomerCareController::class, 'index'])
+    Route::get('/phan-hoi-khach-hang', [FrontCustomerCareController::class, 'index'])
         ->name('phan-hoi-khach-hang');
 
-    Route::get('/tin-tuc', [BlogController::class, 'index'])
+    Route::get('/tin-tuc', [NewController::class, 'index'])
         ->name('tin-tuc');
 
-    Route::get('/tin-tuc/{slug}', [BlogController::class, 'byCategory'])
+    Route::get('/tin-tuc/{slug}', [NewController::class, 'byCategory'])
         ->name('tin-tuc.child');
 
-    Route::get('/tin-tuc/{slug}/{id}', [BlogController::class, 'show'])
+    Route::get('/tin-tuc/{slug}/{id}', [NewController::class, 'show'])
         ->name('tin-tuc-blog.detail');
 
     Route::get('/dang-ky-tu-van', [FrontContactController::class, 'index'])
@@ -104,11 +105,11 @@ Route::group([
     Route::resource('systems', SystemsController::class);
     Route::resource('posts', PostsController::class);
     Route::resource('banners', BannerController::class);
-    Route::resource('introduce-peoples', \App\Http\Controllers\Admin\IntroducePeoplesController::class);
+    Route::resource('introduce-peoples', IntroducePeoplesController::class);
     Route::resource('news', NewsController::class);
+    Route::resource('customer-cares', CustomerCareController::class);
     Route::resource('contacts', ContactsController::class);
 });
-
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

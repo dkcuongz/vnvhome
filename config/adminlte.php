@@ -256,6 +256,11 @@ return [
             'icon' => 'fa fa-comment',
         ],
         [
+            'text' => 'Phản hồi khách hàng',
+            'url' => '/admin/customer-cares',
+            'icon' => 'fa fa-comment',
+        ],
+        [
             'text' => 'Liên hệ',
             'url' => '/admin/contacts',
             'icon' => 'fa fa-phone',

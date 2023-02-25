@@ -32,7 +32,6 @@ class PostRepositoryEloquent extends BaseRepositoryEloquent implements PostRepos
      */
     public function validator()
     {
-
         return PostValidator::class;
     }
 

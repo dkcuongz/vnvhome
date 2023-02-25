@@ -34,6 +34,8 @@ class PostsController extends Controller
      * postsController constructor.
      *
      * @param PostRepository $repository
+     * @param ImageRepository $imageRepository
+     * @param CategoriesRepository $categoryRepository
      */
     public function __construct(PostRepository $repository, ImageRepository $imageRepository, CategoriesRepository $categoryRepository)
     {
@@ -61,11 +63,12 @@ class PostsController extends Controller
 
     public function byCategory($slug)
     {
+        $category = $this->categoryRepository->where('slug', '=', $slug)->with('image')->first();
         $posts = $this->repository->with('images')->where('status', 1)
             ->whereHas('category', function ($query) use ($slug) {
                 $query->where('slug', $slug);
             })->orderBy('created_at', 'DESC')->paginate(8);
-        return view('front-end.posts.index', compact('posts'));
+        return view('front-end.posts.by-category', compact('posts', 'category'));
     }
 
     public function show($slug, $id)

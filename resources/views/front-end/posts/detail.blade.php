@@ -1,50 +1,155 @@
 @extends('layouts.frontend')
 
-@section('title', 'Dự án')
+@section('title', $post->title)
 
 @section('content_header')
-    <h1 class="m-0 text-dark">Dự án</h1>
+    <h1 class="m-0 text-dark">{{$post->title}}</h1>
 @stop
 
 @section('content')
-    <div id="content" class="blog-wrapper blog-archive page-wrapper">
-        <div class="row align-center">
-            <div class="large-10 col">
-                <div id="row-1983341037" class="row large-columns-3 medium-columns- small-columns-1 row-masonry">
-                    @foreach($posts as $post)
-                        <div class="col post-item">
-                            <div class="col-inner">
-                                <a href="{{route('du-an.detail', $post->id)}}" class="plain">
-                                    <div class="box box-text-bottom box-blog-post has-hover">
-                                        <div class="box-image">
-                                            <div class="image-cover" style="padding-top:56%;">
-                                                <img width="300" height="188"
-                                                     src="../../../../wp-content/uploads/2022/07/3a-300x188.jpg"
-                                                     class="attachment-medium size-medium wp-post-image" alt=""
-                                                     loading="lazy"
-                                                     srcset="https://noithatvnluxury.vn/wp-content/uploads/2022/07/3a-300x188.jpg 300w, https://noithatvnluxury.vn/wp-content/uploads/2022/07/3a-1024x640.jpg 1024w, https://noithatvnluxury.vn/wp-content/uploads/2022/07/3a-768x480.jpg 768w, https://noithatvnluxury.vn/wp-content/uploads/2022/07/3a-1536x960.jpg 1536w, https://noithatvnluxury.vn/wp-content/uploads/2022/07/3a-2048x1280.jpg 2048w"
-                                                     sizes="(max-width: 300px) 100vw, 300px"/></div>
-                                        </div>
-                                        <div class="box-text text-center">
-                                            <div class="box-text-inner blog-post-inner">
-
-
-                                                <h5 class="post-title is-large ">Studio nhỏ xinh Nhật Bản- OASIS S2 căn
-                                                    hộ
-                                                    số 02</h5>
-                                                <div class="is-divider"></div>
-                                                <p class="from_the_blog_excerpt ">&nbsp; </p>
-
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
+    @include('front-end.components.product-banner')
+    <div id="content">
+        <h1 class="heading-title hidden">{{$post->title}}</h1>
+        <h2 class="box-heading text-center wow fadeInUp animated red mb-35">
+            <span>{{$post->title}}</span></h2>
+        <div class="project-box-main">
+            <div class="container">
+                <div class="project-box-main-body owl-dots-none">
+                    <div class="box-preview">
+                        <div id="slide-big" class="img-addition-big owl-carousel owl-theme wow fadeInUp animated">
+                            @foreach($post->images as $image)
+                                <div class="item img">
+                                    <img src="{{asset($image->path)}}"
+                                         alt="{{$post->title}}" class="img-responsive">
+                                </div>
+                            @endforeach
                         </div>
-                    @endforeach
+                    </div>
+                    <div class="box-thumbs">
+                        <div id="slide-thumbs" class="img-addition owl-carousel owl-theme wow fadeInUp animated">
+                            @foreach($post->images as $image)
+                                <div class="item">
+                                    <a href="{{asset($image->path)}}"
+                                       data-fancybox="images"
+                                       class="img">
+                                        <img src="{{asset($image->path)}}" class="img-responsive">
+                                    </a>
+                                </div>
+                            @endforeach
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="product-box-related">
+            <div class="container">
+                <h3 class="box-heading text-center wow fadeInUp animated black fwb mt-0">
+                    <span>Sản phẩm liên quan</span></h3>
+                <div class="box-product">
+                    <div class="owl-carousel owl-theme">
+                        @foreach($postReleateds as $postReleated)
+                            <div class="product-item wow fadeInUp animated">
+                                <div class="img">
+                                    <a href="{{route("front.san-pham.detail",[$postReleated->category->slug, $postReleated->id])}}"
+                                       title="Lien Ke  Vinh Heritage ">
+                                        <img src="{{asset($postReleated->images->first()->path??'')}}"
+                                             alt="{{$postReleated->title}}" class="img-responsive">
+                                    </a>
+                                </div>
+                                <a class="title"
+                                   href="{{route("front.san-pham.detail",[$postReleated->category->slug, $postReleated->id])}}"
+                                   title="{{$postReleated->title}}"><span>{{$postReleated->title}}</span></a>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+                <script>
+                    $(document).ready(function () {
+                        $(".product-box-related .owl-carousel").owlCarousel({
+                            items: 5,
+                            loop: true,
+                            nav: true,
+                            navText: ['<img src="{{asset('images-UI/ar_left.png')}}">', '<img src="{{asset('images-UI/ar_right.png')}}">'],
+                            dots: false,
+                            dotsEach: true,
+                            autoplay: true,
+                            margin: 10,
+                            autoplayTimeout: 5000,
+                            responsive: {
+                                0: {
+                                    items: 2,
+                                },
+                                480: {
+                                    items: 3,
+                                },
+                                768: {
+                                    items: 5,
+                                }
+                            }
+                        });
+                    });
+                </script>
+            </div>
+        </div>
     </div>
+    @push('js')
+        <script>
+            $('[data-fancybox="images"]').fancybox({
+                transitionEffect: "circular",
+                buttons: [
+                    "zoom",
+                    "fullScreen",
+                    "thumbs",
+                    "close"
+                ]
+            });
+            $(document).ready(function () {
+                $("#slide-big.owl-carousel").owlCarousel({
+                    items: 1,
+                    loop: true,
+                    nav: false,
+                    dots: true,
+                    dotsEach: true,
+                    autoplay: true,
+                    autoplayTimeout: 3000,
+                    animateOut: 'slideOutUp',
+                    animateIn: 'fadeInUp',
+                });
+                $("#slide-thumbs.owl-carousel").owlCarousel({
+                    items: 4,
+                    loop: true,
+                    nav: true,
+                    navText: ['<img src="{{asset('images-UI/ar_left.png')}}">', '<img src="{{asset('images-UI/ar_right.png')}}">'],
+                    dots: true,
+                    dotsEach: true,
+                    autoplay: true,
+                    margin: 15,
+                    autoplayTimeout: 3000,
+                    responsive: {
+                        0: {
+                            items: 2,
+                        },
+                        480: {
+                            items: 3,
+                        },
+                        768: {
+                            items: 4,
+                        }
+                    },
+                });
+                $('#slide-thumbs').on('changed.owl.carousel', function (event) {
+                    $('#slide-thumbs').find('.owl-dot').each(function (index, value) {
+                        if ($(value).hasClass('active')) {
+                            $('#slide-big').find('.owl-dot').each(function (index2, value) {
+                                if (index2 === index) {
+                                    $(value).trigger('click');
+                                }
+                            });
+                        }
+                    })
+                });
+            });
+        </script>
+    @endpush
 @stop

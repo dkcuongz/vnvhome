@@ -22,6 +22,7 @@ class CreateImagesTable extends Migration
             $table->tinyInteger('system_id')->default(0);
             $table->tinyInteger('category_id')->default(0);
             $table->tinyInteger('new_id')->default(0);
+            $table->tinyInteger('customer_care_id')->default(0);
             $table->timestamps();
         });
     }

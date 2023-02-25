@@ -30,7 +30,6 @@ class ImageRepositoryEloquent extends BaseRepositoryEloquent implements ImageRep
      */
     public function validator()
     {
-
         return ImageValidator::class;
     }
 

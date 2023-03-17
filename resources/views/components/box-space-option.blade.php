@@ -1,6 +1,6 @@
 <section class="box box-space-option">
     <div class="container">
-        <h2 class="box-title text-center wow fadeInUp animated mb-35"><span>Hệ thống XHOME</span></h2>
+        <h2 class="box-title text-center wow fadeInUp animated mb-35"><span>Hệ thống VNVHOME</span></h2>
         <div class="box-info">
             <div class="owl-carousel owl-theme">
                 @foreach($systems as $system)

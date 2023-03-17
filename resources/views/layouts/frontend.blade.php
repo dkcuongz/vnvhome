@@ -192,7 +192,7 @@
                    title="Gửi tin nhắn cho chúng tôi qua Facebook"
                    class="ctrlq fb-button">
                     <div class="bubble">1</div>
-                    <div class="bubble-msg">XHOME có thể giúp gì cho bạn?</div>
+                    <div class="bubble-msg">VNVHOME có thể giúp gì cho bạn?</div>
                 </a>
             </div>
             <!--End Nút Chat -->

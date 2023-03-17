@@ -12,7 +12,7 @@
     </section>
     <section class="box box-news-by-category box-news-by-category-1">
         <div class="container">
-            <h2 class="box-title text-center wow fadeInUp animated mb-25"><span>Hoạt động của XHOME</span></h2>
+            <h2 class="box-title text-center wow fadeInUp animated mb-25"><span>Hoạt động của VNVHOME</span></h2>
             <div class="box-info">
                 <div class="owl-carousel owl-theme">
                     @foreach($newActivities as $newActivity)
@@ -41,7 +41,7 @@
         <div class="container">
             <h2 class="box-title text-center wow fadeInUp animated mb-25"><span>Ưu đãi, chính sách</span></h2>
             <div class="description-detail mb-25 wow fadeInUp animated text-center">Nhằm tri ân khách hàng cũng như thúc
-                đẩy kinh doanh, XHOME mang tới những chính sách khuyến mại, ưu đãi hàng tháng với các mẫu sản phẩm đa
+                đẩy kinh doanh, VNVHOME mang tới những chính sách khuyến mại, ưu đãi hàng tháng với các mẫu sản phẩm đa
                 dạng dành cho khách hàng.
             </div>
             <div class="box-info">

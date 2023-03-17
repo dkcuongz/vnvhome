@@ -1,4 +1,4 @@
-<section class="box box-why-choose bg-cover" style="background-image: url(https://xhome.com.vn/upload/image/data/banner/bg-w-8c3.png)">
+<section class="box box-why-choose bg-cover" style="background-image: url({{asset('images-UI/bg-w-8c3.png')}})">
     <div class="container">
         <h2 class="box-title text-center wow fadeInUp animated mb-35 color-white"><span>Tại sao chọn chúng tôi</span></h2>
         <div class="row">
@@ -7,7 +7,7 @@
                     <div class="row">
                         <div class="col-xs-2">
                             <div class="img wow fadeInUp animated">
-                                <img src="https://xhome.com.vn/upload/image/data/icon/w1-b3a.png" alt="Tại sao chọn chúng tôi" class="center-block img-responsive">
+                                <img src="{{asset('images-UI/w1-b3a.png')}}"  alt="Tại sao chọn chúng tôi" class="center-block img-responsive">
                             </div>
                         </div>
                         <div class="col-xs-10">
@@ -30,7 +30,7 @@
                         </div>
                         <div class="col-xs-2">
                             <div class="img wow fadeInUp animated">
-                                <img src="https://xhome.com.vn/upload/image/data/icon/w1-b3a.png" alt="Tại sao chọn chúng tôi" class="center-block img-responsive">
+                                <img src="{{asset('images-UI/w1-b3a.png')}}" alt="Tại sao chọn chúng tôi" class="center-block img-responsive">
                             </div>
                         </div>
                     </div>
@@ -41,7 +41,7 @@
                     <div class="row">
                         <div class="col-xs-2">
                             <div class="img wow fadeInUp animated">
-                                <img src="https://xhome.com.vn/upload/image/data/icon/w2-fc9.png" alt="Tại sao chọn chúng tôi" class="center-block img-responsive">
+                                <img src="{{asset('images-UI/w2-fc9.png')}}" alt="Tại sao chọn chúng tôi" class="center-block img-responsive">
                             </div>
                         </div>
                         <div class="col-xs-10">
@@ -58,7 +58,7 @@
                     <div class="row">
                         <div class="col-xs-2">
                             <div class="img wow fadeInUp animated">
-                                <img src="https://xhome.com.vn/upload/image/data/icon/w2-fc9.png" alt="Tại sao chọn chúng tôi" class="center-block img-responsive">
+                                <img src="{{asset('images-UI/w2-fc9.png')}}" alt="Tại sao chọn chúng tôi" class="center-block img-responsive">
                             </div>
                         </div>
                         <div class="col-xs-10">
@@ -76,13 +76,13 @@
                     <div class="row">
                         <div class="col-xs-2">
                             <div class="img wow fadeInUp animated">
-                                <img src="https://xhome.com.vn/upload/image/data/icon/w3-3b4.png" alt="Tại sao chọn chúng tôi" class="center-block img-responsive">
+                                <img src="{{asset('images-UI/w3-3b4.png')}}" alt="Tại sao chọn chúng tôi" class="center-block img-responsive">
                             </div>
                         </div>
                         <div class="col-xs-10">
                             <div class="info text-left">
                                 <h4 class="title wow fadeInUp animated"><span>Chất lượng sản phẩm</span></h4>
-                                <p class="description wow fadeInUp animated">XHOME tập trung vào các sản phẩm mang tính đột phá và phù hợp với nhu cầu người sử dụng</p>
+                                <p class="description wow fadeInUp animated">VNVHOME tập trung vào các sản phẩm mang tính đột phá và phù hợp với nhu cầu người sử dụng</p>
                             </div>
                         </div>
                     </div>
@@ -94,12 +94,12 @@
                         <div class="col-xs-10">
                             <div class="info text-right">
                                 <h4 class="title wow fadeInUp animated"><span>Chất lượng sản phẩm</span></h4>
-                                <p class="description wow fadeInUp animated">XHOME tập trung vào các sản phẩm mang tính đột phá và phù hợp với nhu cầu người sử dụng</p>
+                                <p class="description wow fadeInUp animated">VNVHOME tập trung vào các sản phẩm mang tính đột phá và phù hợp với nhu cầu người sử dụng</p>
                             </div>
                         </div>
                         <div class="col-xs-2">
                             <div class="img wow fadeInUp animated">
-                                <img src="https://xhome.com.vn/upload/image/data/icon/w3-3b4.png" alt="Tại sao chọn chúng tôi" class="center-block img-responsive">
+                                <img src="{{asset('images-UI/w3-3b4.png')}}" alt="Tại sao chọn chúng tôi" class="center-block img-responsive">
                             </div>
                         </div>
                     </div>
@@ -110,7 +110,7 @@
                     <div class="row">
                         <div class="col-xs-2">
                             <div class="img wow fadeInUp animated">
-                                <img src="https://xhome.com.vn/upload/image/data/Nhung/w4-7b8-80-80-f38.png" alt="Tại sao chọn chúng tôi" class="center-block img-responsive">
+                                <img src="{{asset('images-UI/w4-7b8-80-80-f38.png')}}"  alt="Tại sao chọn chúng tôi" class="center-block img-responsive">
                             </div>
                         </div>
                         <div class="col-xs-10">
@@ -127,7 +127,7 @@
                     <div class="row">
                         <div class="col-xs-2">
                             <div class="img wow fadeInUp animated">
-                                <img src="https://xhome.com.vn/upload/image/data/Nhung/w4-7b8-80-80-f38.png" alt="Tại sao chọn chúng tôi" class="center-block img-responsive">
+                                <img src="{{asset('images-UI/w4-7b8-80-80-f38.png')}}" alt="Tại sao chọn chúng tôi" class="center-block img-responsive">
                             </div>
                         </div>
                         <div class="col-xs-10">
@@ -145,7 +145,7 @@
                     <div class="row">
                         <div class="col-xs-2">
                             <div class="img wow fadeInUp animated">
-                                <img src="https://xhome.com.vn/upload/image/data/Nhung/w5-c4a-80-80-7d9.png" alt="Tại sao chọn chúng tôi" class="center-block img-responsive">
+                                <img src="{{asset('images-UI/w5-c4a-80-80-7d9.png')}}" alt="Tại sao chọn chúng tôi" class="center-block img-responsive">
                             </div>
                         </div>
                         <div class="col-xs-10">
@@ -168,7 +168,7 @@
                         </div>
                         <div class="col-xs-2">
                             <div class="img wow fadeInUp animated">
-                                <img src="https://xhome.com.vn/upload/image/data/Nhung/w5-c4a-80-80-7d9.png" alt="Tại sao chọn chúng tôi" class="center-block img-responsive">
+                                <img src="{{asset('images-UI/w5-c4a-80-80-7d9.png')}}" alt="Tại sao chọn chúng tôi" class="center-block img-responsive">
                             </div>
                         </div>
                     </div>
@@ -179,13 +179,13 @@
                     <div class="row">
                         <div class="col-xs-2">
                             <div class="img wow fadeInUp animated">
-                                <img src="https://xhome.com.vn/upload/image/data/icon/w6-14f.png" alt="Tại sao chọn chúng tôi" class="center-block img-responsive">
+                                <img src="{{asset('images-UI/w6-14f.png')}}" alt="Tại sao chọn chúng tôi" class="center-block img-responsive">
                             </div>
                         </div>
                         <div class="col-xs-10">
                             <div class="info text-left">
                                 <h4 class="title wow fadeInUp animated"><span>Đảm bảo sự hài lòng của khách hàng</span></h4>
-                                <p class="description wow fadeInUp animated">Sự hài lòng của khách hàng là động lực cho sự phát triển của XHOME</p>
+                                <p class="description wow fadeInUp animated">Sự hài lòng của khách hàng là động lực cho sự phát triển của VNVHOME</p>
                             </div>
                         </div>
                     </div>
@@ -196,13 +196,13 @@
                     <div class="row">
                         <div class="col-xs-2">
                             <div class="img wow fadeInUp animated">
-                                <img src="https://xhome.com.vn/upload/image/data/icon/w6-14f.png" alt="Tại sao chọn chúng tôi" class="center-block img-responsive">
+                                <img src="{{asset('images-UI/w6-14f.png')}}" alt="Tại sao chọn chúng tôi" class="center-block img-responsive">
                             </div>
                         </div>
                         <div class="col-xs-10">
                             <div class="info text-left">
                                 <h4 class="title wow fadeInUp animated"><span>Đảm bảo sự hài lòng của khách hàng</span></h4>
-                                <p class="description wow fadeInUp animated">Sự hài lòng của khách hàng là động lực cho sự phát triển của XHOME</p>
+                                <p class="description wow fadeInUp animated">Sự hài lòng của khách hàng là động lực cho sự phát triển của VNVHOME</p>
                             </div>
                         </div>
                     </div>

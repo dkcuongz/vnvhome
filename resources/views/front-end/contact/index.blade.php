@@ -9,13 +9,13 @@
 @section('content')
     <section class="box box-product-featured box-project-categories">
         <div class="banner">
-            <img src="https://xhome.com.vn/upload/image/data/banner/x11-97d-18a.jpg" alt="Đăng ký tư vấn"
+            <img src="{{asset('images-UI/banner-contact.jpg')}}" alt="Đăng ký tư vấn"
                  class="center-block img-responsive">
             <div class="banner-info hidden-xs">
                 <div class="container">
                     <h2>Đăng ký tư vấn</h2>
                     <p>Đội ngũ nhân viên chuyên nghiệp, nhiệt tình, quy trình làm việc rõ ràng, nhanh chóng sẽ giúp
-                        khách hàng có được sự an tâm và thoải mái khi sử dụng sản phẩm và dịch vụ của XHOME. Để lại
+                        khách hàng có được sự an tâm và thoải mái khi sử dụng sản phẩm và dịch vụ của VNVHOME. Để lại
                         thông tin bên dưới, chúng tôi sẽ giúp bạn có được không gian sống đáng mơ ước</p>
                 </div>
             </div>
@@ -153,7 +153,7 @@
                             items: 4,
                             loop: true,
                             nav: true,
-                            navText: ['<img src="https://xhome.com.vn/public/home/img/ar_left.png">', '<img src="https://xhome.com.vn/public/home/img/ar_right.png">'],
+                            navText: ['<img src="{{asset('images-UI/ar_left.png')}}">', '<img src="{{asset('images-UI/ar_right.png')}}">'],
                             dots: false,
                             dotsEach: true,
                             autoplay: true,
@@ -191,7 +191,7 @@
                                          alt="email">
                                 </div>
                                 <span>Email:</span>
-                                <span>marketing.xhome@gmail.com</span>
+                                <span>marketing.vnvhome@gmail.com</span>
                             </div>
                         </div>
                         <div class="ct-phone ct-info wow fadeInUp animated">

@@ -1,6 +1,6 @@
 <section class="box box-people">
     <div class="container">
-        <h2 class="box-title text-center wow fadeInUp animated mb-35"><span>Con người XHOME</span></h2>
+        <h2 class="box-title text-center wow fadeInUp animated mb-35"><span>Con người VNVHOME</span></h2>
         <div class="box-info">
             <div class="owl-carousel owl-theme">
                 @foreach($peoples as $people)
